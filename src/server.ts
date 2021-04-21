@@ -1,22 +1,14 @@
+import "reflect-metadata"
 import express from 'express'
+import "./database";
+import { router } from "./routes";
 
 
 const app = express()
 app.use(express.json())
+app.use(router)
 
-app.get("/" ,(request,response )=>{
 
-  return response.json({message:"success"})
-})
-
-app.post("/" ,(request,response )=>{
-  const {name, email} = request.body
-  const user ={
-    name,
-    email
-  }
-  return response.json(user)
-})
 app.listen(3333, ()=>{
   console.log("running")
 })
